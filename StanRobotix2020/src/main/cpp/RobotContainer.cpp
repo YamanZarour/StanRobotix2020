@@ -7,7 +7,7 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
+RobotContainer::RobotContainer() : m_tankDriveJoystick(&m_driveTrain, [this]{return GetLeftJoystick();}, [this]{return GetRightJoystick();}) {
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings
@@ -20,5 +20,15 @@ void RobotContainer::ConfigureButtonBindings() {
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
-  return &m_autonomousCommand;
+  return nullptr;
+}
+
+double RobotContainer::GetLeftJoystick()
+{
+  return -m_joystick.GetRawAxis(kJoystickL);
+}
+
+double RobotContainer::GetRightJoystick()
+{
+  return -m_joystick.GetRawAxis(kJoystickR);
 }

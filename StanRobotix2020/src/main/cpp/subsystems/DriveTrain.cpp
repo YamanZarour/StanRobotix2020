@@ -5,18 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "subsystems/DriveTrain.h"
 
+DriveTrain::DriveTrain() {}
 
+void DriveTrain::Drive(double left, double right)
+{
+    m_robotDrive.TankDrive(left, right);
+}
 
-constexpr int kMotorL1 = 9;
-constexpr int kMotorL2 = 8;
-constexpr int kMotorR1 = 1;
-constexpr int kMotorR2 = 0;
-
-constexpr int kJoystick = 0;
-constexpr int kJoystickL = 1;
-constexpr int kJoystickR = 5;
-constexpr int kCaptDist = 0;
-constexpr double VoltToFootDistCapt = 3.5606;
-
+// This method will be called once per scheduler run
+void DriveTrain::Periodic() {}
