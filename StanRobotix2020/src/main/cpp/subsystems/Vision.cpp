@@ -5,14 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/DriveTrain.h"
+#include "subsystems/Vision.h"
 
-DriveTrain::DriveTrain() {}
-
-void DriveTrain::Drive(double left, double right)
-{
-    m_robotDrive.TankDrive(left, right, false);
-}
+Vision::Vision() {}
 
 // This method will be called once per scheduler run
-void DriveTrain::Periodic() {}
+void Vision::Periodic() {}

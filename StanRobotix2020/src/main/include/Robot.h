@@ -10,6 +10,9 @@
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 
+// #include <frc/Spark.h>
+// #include <frc/Joystick.h>
+
 #include "RobotContainer.h"
 
 class Robot : public frc::TimedRobot {
@@ -30,4 +33,6 @@ class Robot : public frc::TimedRobot {
   frc2::Command* m_autonomousCommand = nullptr;
 
   RobotContainer m_container;
+  // frc::Spark tempMotor{5};
+  // frc::Joystick tempJoystick{0};
 };

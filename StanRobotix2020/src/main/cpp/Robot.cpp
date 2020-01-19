@@ -59,7 +59,9 @@ void Robot::TeleopInit() {
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  // tempMotor.Set(tempJoystick.GetRawAxis(1)/4);
+}
 
 /**
  * This function is called periodically during test mode.

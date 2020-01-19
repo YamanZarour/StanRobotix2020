@@ -9,8 +9,9 @@
 
 #include <frc2/command/Command.h>
 
-#include "commands/TankDriveJoystick.h"
-#include "subsystems/DriveTrain.h"
+#include <commands/TankDriveJoystick.h>
+#include <subsystems/DriveTrain.h>
+#include <subsystems/Vision.h>
 #include <frc/Joystick.h>
 #include <Constants.h>
 
@@ -33,6 +34,7 @@ class RobotContainer {
  private:
   // The robot's subsystems and commands are defined here...
   DriveTrain m_driveTrain;
+  Vision m_vision;
   TankDriveJoystick m_tankDriveJoystick;
   frc::Joystick m_joystick{kJoystick};
 

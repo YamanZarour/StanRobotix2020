@@ -5,14 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/DriveTrain.h"
+#pragma once
 
-DriveTrain::DriveTrain() {}
+#include <frc2/command/SubsystemBase.h>
 
-void DriveTrain::Drive(double left, double right)
-{
-    m_robotDrive.TankDrive(left, right, false);
-}
+class Vision : public frc2::SubsystemBase {
+ public:
+  Vision();
 
-// This method will be called once per scheduler run
-void DriveTrain::Periodic() {}
+  /**
+   * Will be called periodically whenever the CommandScheduler runs.
+   */
+  void Periodic();
+
+ private:
+  // Components (e.g. motor controllers and sensors) should generally be
+  // declared private and exposed only through public methods.
+};
