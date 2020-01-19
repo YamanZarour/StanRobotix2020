@@ -30,5 +30,10 @@ double RobotContainer::GetLeftJoystick()
 
 double RobotContainer::GetRightJoystick()
 {
-  return -m_joystick.GetRawAxis(kJoystickR);
+  return -m_joystick.GetRawAxis(kJoystickL);
+}
+
+Senseurs * RobotContainer::GetSenseurs()
+{
+  return &m_senseurs;
 }

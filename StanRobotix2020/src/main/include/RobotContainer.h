@@ -12,6 +12,7 @@
 #include <commands/TankDriveJoystick.h>
 #include <subsystems/DriveTrain.h>
 #include <subsystems/Vision.h>
+#include <subsystems/Senseurs.h>
 #include <frc/Joystick.h>
 #include <Constants.h>
 
@@ -30,11 +31,13 @@ class RobotContainer {
 
   double GetLeftJoystick();
   double GetRightJoystick();
+  Senseurs * GetSenseurs();
 
  private:
   // The robot's subsystems and commands are defined here...
   DriveTrain m_driveTrain;
   Vision m_vision;
+  Senseurs m_senseurs;
   TankDriveJoystick m_tankDriveJoystick;
   frc::Joystick m_joystick{kJoystick};
 

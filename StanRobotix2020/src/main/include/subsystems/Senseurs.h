@@ -7,19 +7,23 @@
 
 #pragma once
 
+#include <frc2/command/SubsystemBase.h>
+#include <frc/Encoder.h>
+#include <Constants.h>
 
+class Senseurs : public frc2::SubsystemBase {
+ public:
+  Senseurs();
+  double GetLeftEncoder();
+  double GetRightEncoder();
+  void ResetEncoders();
 
-constexpr int kMotorL1 = 9;
-constexpr int kMotorL2 = 8;
-constexpr int kMotorR1 = 1;
-constexpr int kMotorR2 = 0;
+  /**
+   * Will be called periodically whenever the CommandScheduler runs.
+   */
+  void Periodic();
 
-constexpr int kJoystick = 0;
-constexpr int kJoystickL = 1;
-constexpr int kJoystickR = 5;
-constexpr int kCaptDist = 0;
-constexpr double VoltToFootDistCapt = 3.5606;
-
-constexpr double kPulsesPerRev = 360; // encoder
-constexpr double kWheelDiameter = 6; // inches
-
+ private:
+ frc::Encoder leftEncoder{2,3, true}; //inverse
+ frc::Encoder rightEncoder{0,1, false}; //bon cote
+};

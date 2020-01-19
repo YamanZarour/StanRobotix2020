@@ -10,6 +10,8 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
+#include <iostream>
+
 void Robot::RobotInit() {}
 
 /**
@@ -54,12 +56,17 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+  m_container.GetSenseurs()->ResetEncoders();
 }
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+
+  std::cout<<"Left side : "<<m_container.GetSenseurs()->GetLeftEncoder()<<std::endl;
+  std::cout<<"Right side : "<<m_container.GetSenseurs()->GetRightEncoder()<<std::endl;
+  std::cout<<std::endl;
   // tempMotor.Set(tempJoystick.GetRawAxis(1)/4);
 }
 
