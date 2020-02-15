@@ -10,10 +10,13 @@
 #include <frc2/command/Command.h>
 
 #include "commands/TankDriveJoystick.h"
+#include "commands/PropulserBalle.h"
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Vision.h"
 #include "subsystems/Senseurs.h"
+#include "subsystems/MotorBall.h"
 #include <frc/Joystick.h>
+#include <frc2/command/button/JoystickButton.h>
 #include <Constants.h>
 
 /**
@@ -42,7 +45,10 @@ class RobotContainer {
   Vision m_vision;
   Senseurs m_senseurs;
   TankDriveJoystick m_tankDriveJoystick;
+  MotorBall m_motorBall;
   frc::Joystick m_joystick{kJoystick};
+  frc2::JoystickButton m_buttonA{&m_joystick,kJoystickA};
 
   void ConfigureButtonBindings();
+  double demerdetoi;
 };

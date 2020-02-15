@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "RobotContainer.h"
+#include <Robot.h>
 
 RobotContainer::RobotContainer() : m_tankDriveJoystick(&m_driveTrain, [this]{return GetLeftJoystick();}, [this]{return GetRightJoystick();}) {
   // Initialize all of your commands and subsystems here
@@ -15,6 +16,7 @@ RobotContainer::RobotContainer() : m_tankDriveJoystick(&m_driveTrain, [this]{ret
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+  m_buttonA.WhileHeld(new PropulserBalle(&m_motorBall,Robot::motorBallForce));
   // Configure your button bindings here
 }
 

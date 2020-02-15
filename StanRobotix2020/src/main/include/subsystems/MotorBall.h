@@ -7,22 +7,24 @@
 
 #pragma once
 
+#include <frc2/command/SubsystemBase.h>
+#include <frc/Spark.h>
+#include "Constants.h"
 
-constexpr int kMotorL1 = 9;
-constexpr int kMotorL2 = 8;
-constexpr int kMotorR1 = 1;
-constexpr int kMotorR2 = 0;
 
-constexpr int kMotorBall = 9;
+class MotorBall : public frc2::SubsystemBase {
+ public:
+  MotorBall();
 
-constexpr int kJoystick = 0;
-constexpr int kJoystickL = 1;
-constexpr int kJoystickR = 5;
-constexpr int kJoystickA = 3;
+  /**
+   * Will be called periodically whenever the CommandScheduler runs.
+   */
+  void Periodic();
+  void Propulsion(double force);
 
-constexpr int kCaptDist = 0;
-constexpr double VoltToFootDistCapt = 3.5606;
+ private:
+  // Components (e.g. motor controllers and sensors) should generally be
+  // declared private and exposed only through public methods.
 
-constexpr double kPulsesPerRev = 360; // encoder
-constexpr double kWheelDiameter = 6; // inches
-
+  frc::Spark motor{kMotorBall};
+};

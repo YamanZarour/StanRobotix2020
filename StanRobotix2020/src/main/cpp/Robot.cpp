@@ -13,7 +13,12 @@
 #include <iostream>
 using namespace std;
 
-void Robot::RobotInit() {}
+double Robot::motorBallForce = 0.5;
+
+void Robot::RobotInit() {
+  prefs = frc::Preferences::GetInstance();
+	motorBallForce = prefs->GetDouble("motorBallForce", 0.5);
+}
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -23,7 +28,11 @@ void Robot::RobotInit() {}
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-void Robot::RobotPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
+void Robot::RobotPeriodic() 
+{
+  frc2::CommandScheduler::GetInstance().Run();
+  prefs = frc::Preferences::GetInstance();
+	motorBallForce = prefs->GetDouble("motorBallForce", 0.5);}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You

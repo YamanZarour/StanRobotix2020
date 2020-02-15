@@ -5,24 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "subsystems/MotorBall.h"
 
+MotorBall::MotorBall() {}
 
-constexpr int kMotorL1 = 9;
-constexpr int kMotorL2 = 8;
-constexpr int kMotorR1 = 1;
-constexpr int kMotorR2 = 0;
+// This method will be called once per scheduler run
+void MotorBall::Periodic()
+{
+    
+}
 
-constexpr int kMotorBall = 9;
-
-constexpr int kJoystick = 0;
-constexpr int kJoystickL = 1;
-constexpr int kJoystickR = 5;
-constexpr int kJoystickA = 3;
-
-constexpr int kCaptDist = 0;
-constexpr double VoltToFootDistCapt = 3.5606;
-
-constexpr double kPulsesPerRev = 360; // encoder
-constexpr double kWheelDiameter = 6; // inches
-
+void MotorBall::Propulsion(double force)
+{
+    motor.Set(force);
+}

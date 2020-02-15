@@ -20,6 +20,8 @@
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Senseurs.h"
 
+#include "frc/Preferences.h"
+
 class Robot : public frc::TimedRobot {
  public:
   void RobotInit() override;
@@ -31,6 +33,8 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
+  
+  static double motorBallForce;
 
  private:
   // Have it null by default so that if testing teleop it
@@ -43,6 +47,8 @@ class Robot : public frc::TimedRobot {
   nt::NetworkTableInstance mNetworkTableInstanceInst;
   cs::CvSink * cvSink;
   cs::CvSource * outputStream;*/
+
+  frc::Preferences* prefs;
 
   Senseurs m_senseur;
   DriveTrain m_drivetrain;
