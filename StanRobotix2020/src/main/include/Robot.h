@@ -10,10 +10,15 @@
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 
-// #include <frc/Spark.h>
-// #include <frc/Joystick.h>
+#include <frc/Spark.h>
+#include <frc/Joystick.h>
 
 #include "RobotContainer.h"
+
+#include "commands/TestCamera.h"
+
+#include "subsystems/DriveTrain.h"
+#include "subsystems/Senseurs.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -31,8 +36,18 @@ class Robot : public frc::TimedRobot {
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand = nullptr;
+  /*TestCamera * m_testCameraCommand;
+
+  cs::UsbCamera * Camera;
+  frc::CameraServer * Server;
+  nt::NetworkTableInstance mNetworkTableInstanceInst;
+  cs::CvSink * cvSink;
+  cs::CvSource * outputStream;*/
+
+  Senseurs m_senseur;
+  DriveTrain m_drivetrain;
 
   RobotContainer m_container;
-  // frc::Spark tempMotor{5};
-  // frc::Joystick tempJoystick{0};
+  frc::Spark tempMotor{9};
+  frc::Joystick tempJoystick{0};
 };

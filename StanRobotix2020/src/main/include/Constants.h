@@ -8,7 +8,6 @@
 #pragma once
 
 
-
 constexpr int kMotorL1 = 9;
 constexpr int kMotorL2 = 8;
 constexpr int kMotorR1 = 1;

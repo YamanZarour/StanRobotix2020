@@ -11,6 +11,7 @@
 #include <frc/PWMTalonSRX.h>
 #include <frc/SpeedControllerGroup.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <ctre/Phoenix.h>
 #include <Constants.h>
 
 class DriveTrain : public frc2::SubsystemBase {
@@ -24,10 +25,10 @@ class DriveTrain : public frc2::SubsystemBase {
   void Drive(double left, double right);
 
  private:
-  frc::PWMTalonSRX m_L1{kMotorL1};
-  frc::PWMTalonSRX m_L2{kMotorL2};
-  frc::PWMTalonSRX m_R1{kMotorR1};
-  frc::PWMTalonSRX m_R2{kMotorR2};
+  WPI_TalonSRX m_L1{kMotorL1};
+  WPI_TalonSRX m_L2{kMotorL2};
+  WPI_TalonSRX m_R1{kMotorR1};
+  WPI_TalonSRX m_R2{kMotorR2};
   frc::SpeedControllerGroup m_left{m_L1, m_L2};
   frc::SpeedControllerGroup m_right{m_R1, m_R2};
   frc::DifferentialDrive m_robotDrive{m_left, m_right};

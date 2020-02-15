@@ -9,7 +9,7 @@
 
 RobotContainer::RobotContainer() : m_tankDriveJoystick(&m_driveTrain, [this]{return GetLeftJoystick();}, [this]{return GetRightJoystick();}) {
   // Initialize all of your commands and subsystems here
-  m_driveTrain.SetDefaultCommand(m_tankDriveJoystick);
+  //m_driveTrain.SetDefaultCommand(m_tankDriveJoystick);
   // Configure the button bindings
   ConfigureButtonBindings();
 }

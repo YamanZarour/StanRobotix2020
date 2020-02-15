@@ -7,10 +7,11 @@
 
 #include "Robot.h"
 
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <frc2/command/CommandScheduler.h>
+//#include <frc/smartdashboard/SmartDashboard.h>
+//#include <frc2/command/CommandScheduler.h>
 
 #include <iostream>
+using namespace std;
 
 void Robot::RobotInit() {}
 
@@ -45,7 +46,13 @@ void Robot::AutonomousInit() {
   }
 }
 
-void Robot::AutonomousPeriodic() {}
+void Robot::AutonomousPeriodic() {
+
+
+  cout << endl << endl << m_senseur.GetAngleX() << endl << endl;
+
+    //*Camera = Server->GetInstance()->StartAutomaticCapture();
+}
 
 void Robot::TeleopInit() {
   // This makes sure that the autonomous stops running when
@@ -56,7 +63,15 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
-  m_container.GetSenseurs()->ResetEncoders();
+  //m_container.GetSenseurs()->ResetEncoders();
+  //m_testCameraCommand->Initialize();
+
+  
+
+  //*Camera = Server->GetInstance()->StartAutomaticCapture();
+
+  //mNetworkTableInstanceInst = nt::NetworkTableInstance::GetDefault();
+
 }
 
 /**
@@ -64,10 +79,28 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {
 
-  std::cout<<"Left side : "<<m_container.GetSenseurs()->GetLeftEncoder()<<std::endl;
-  std::cout<<"Right side : "<<m_container.GetSenseurs()->GetRightEncoder()<<std::endl;
-  std::cout<<std::endl;
-  // tempMotor.Set(tempJoystick.GetRawAxis(1)/4);
+  //*Camera = Server->GetInstance()->StartAutomaticCapture();
+  //*cvSink = frc::CameraServer::GetInstance()->GetVideo();
+  //*outputStream = frc::CameraServer::GetInstance()->PutVideo("Blur", 640, 480);
+
+  //m_testCameraCommand->Execute();
+
+    //auto table = mNetworkTableInstanceInst.GetTable("GRIP/myLinesReport");
+    //auto wAngle = table->GetEntry("angle").GetDoubleArray(0);
+
+    //auto LinesOutput = Pipeline->GetFilterLinesOutput();
+    
+
+    //for (int i = 0; i < wAngle.size(); i++)
+    //{
+        //std::cout << wAngle[i];
+    //}
+
+
+  //std::cout<<"Left side : "<<m_container.GetSenseurs()->GetLeftEncoder()<<std::endl;
+  //std::cout<<"Right side : "<<m_container.GetSenseurs()->GetRightEncoder()<<std::endl;
+  //std::cout<<std::endl;
+  tempMotor.Set(tempJoystick.GetRawAxis(1));
 }
 
 /**

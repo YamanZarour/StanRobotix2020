@@ -9,6 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Encoder.h>
+#include <adi/ADIS16448_IMU.h>
 #include <Constants.h>
 
 class Senseurs : public frc2::SubsystemBase {
@@ -18,6 +19,15 @@ class Senseurs : public frc2::SubsystemBase {
   double GetRightEncoder();
   void ResetEncoders();
 
+  /* Fonctions temporaires
+  a voir avec la doc */
+
+  double GetAngleX();
+  double GetAccelX();
+  double GetAccelY();
+  double GetAccelZ();
+  void Calibrate();
+
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -26,4 +36,5 @@ class Senseurs : public frc2::SubsystemBase {
  private:
  frc::Encoder leftEncoder{2,3, true}; //inverse
  frc::Encoder rightEncoder{0,1, false}; //bon cote
+ frc::ADIS16448_IMU imu{}; // La doc pour ce truc arrive bientot NORMALEMENT
 };
