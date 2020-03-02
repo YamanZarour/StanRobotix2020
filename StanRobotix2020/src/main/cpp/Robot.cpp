@@ -18,7 +18,7 @@ double Robot::motorBallForce = 0.5;
 void Robot::RobotInit() {
   prefs = frc::Preferences::GetInstance();
 	motorBallForce = prefs->GetDouble("motorBallForce", 0.5);
-  m_senseur.Calibrate();
+  m_senseurs.Calibrate();
   m_imu.Calibrate();
 }
 
@@ -34,7 +34,8 @@ void Robot::RobotPeriodic()
 {
   frc2::CommandScheduler::GetInstance().Run();
   prefs = frc::Preferences::GetInstance();
-	motorBallForce = prefs->GetDouble("motorBallForce", 0.7);}
+	motorBallForce = prefs->GetDouble("motorBallForce", 0.7);
+}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
@@ -60,7 +61,7 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
 
   
-  // cout << endl << endl << m_senseur.GetAngleX() << endl << endl;
+  // cout << endl << endl << m_senseurs.GetAngleX() << endl << endl;
 
   
 
@@ -77,7 +78,6 @@ void Robot::TeleopInit() {
     m_autonomousCommand = nullptr;
   }
   
-  //m_moterBall.Propulsion(-0.8);
 
   m_imu.SetYawAxis(frc::ADIS16448_IMU::IMUAxis::kX);
   m_imu.Calibrate();
@@ -97,7 +97,6 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {
   
-  motor1.Set(0.2);
 
   /*
   cout << endl << endl;
@@ -120,7 +119,6 @@ void Robot::TeleopPeriodic() {
   //std::cout<<"Right side : "<<m_container.GetSenseurs()->GetRightEncoder()<<std::endl;
   //std::cout<<std::endl;
    
-  // tempMotor.Set(tempJoystick.GetRawAxis(1));
 }
 
 /**

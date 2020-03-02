@@ -49,5 +49,4 @@ class RobotContainer {
   frc2::JoystickButton m_buttonA{&m_joystick,kJoystickA};
 
   void ConfigureButtonBindings();
-  double demerdetoi;
 };
