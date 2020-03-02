@@ -36,5 +36,5 @@ class Senseurs : public frc2::SubsystemBase {
  private:
  frc::Encoder leftEncoder{2,3, true}; //inverse
  frc::Encoder rightEncoder{0,1, false}; //bon cote
- frc::ADIS16448_IMU imu{}; // La doc pour ce truc arrive bientot NORMALEMENT
+ // frc::ADIS16448_IMU imu{};
 };

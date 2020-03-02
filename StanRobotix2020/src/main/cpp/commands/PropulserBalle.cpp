@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "commands/PropulserBalle.h"
+#include "Robot.h"
 
 PropulserBalle::PropulserBalle(MotorBall *motorBall, double force) : m_motorBall(motorBall), m_force(force)
 {
@@ -20,7 +21,8 @@ void PropulserBalle::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void PropulserBalle::Execute()
 {
-  m_motorBall->Propulsion(m_force);
+  //std::cout<<"testing"<<std::endl;
+  m_motorBall->Propulsion(Robot::motorBallForce);
 }
 
 // Called once the command ends or is interrupted.

@@ -18,6 +18,8 @@ double Robot::motorBallForce = 0.5;
 void Robot::RobotInit() {
   prefs = frc::Preferences::GetInstance();
 	motorBallForce = prefs->GetDouble("motorBallForce", 0.5);
+  m_senseur.Calibrate();
+  m_imu.Calibrate();
 }
 
 /**
@@ -32,7 +34,7 @@ void Robot::RobotPeriodic()
 {
   frc2::CommandScheduler::GetInstance().Run();
   prefs = frc::Preferences::GetInstance();
-	motorBallForce = prefs->GetDouble("motorBallForce", 0.5);}
+	motorBallForce = prefs->GetDouble("motorBallForce", 0.7);}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
@@ -57,8 +59,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 
+  
+  // cout << endl << endl << m_senseur.GetAngleX() << endl << endl;
 
-  cout << endl << endl << m_senseur.GetAngleX() << endl << endl;
+  
 
     //*Camera = Server->GetInstance()->StartAutomaticCapture();
 }
@@ -72,6 +76,11 @@ void Robot::TeleopInit() {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
   }
+  
+  //m_moterBall.Propulsion(-0.8);
+
+  m_imu.SetYawAxis(frc::ADIS16448_IMU::IMUAxis::kX);
+  m_imu.Calibrate();
   //m_container.GetSenseurs()->ResetEncoders();
   //m_testCameraCommand->Initialize();
 
@@ -87,29 +96,31 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+  
+  motor1.Set(0.2);
 
-  //*Camera = Server->GetInstance()->StartAutomaticCapture();
-  //*cvSink = frc::CameraServer::GetInstance()->GetVideo();
-  //*outputStream = frc::CameraServer::GetInstance()->PutVideo("Blur", 640, 480);
+  /*
+  cout << endl << endl;
+  cout << (m_imu.GetAccelInstantX()) / 1200 << ";";
+  cout << (m_imu.GetAccelInstantY()) / 1200 << ";";
+  cout << (m_imu.GetAccelInstantZ()) / 1200 << ";";
+  cout << accel.GetX() << ";";
+  cout << accel.GetY() << ";";
+  cout << accel.GetZ() << endl;
+  */
 
-  //m_testCameraCommand->Execute();
-
-    //auto table = mNetworkTableInstanceInst.GetTable("GRIP/myLinesReport");
-    //auto wAngle = table->GetEntry("angle").GetDoubleArray(0);
-
-    //auto LinesOutput = Pipeline->GetFilterLinesOutput();
-    
-
-    //for (int i = 0; i < wAngle.size(); i++)
-    //{
-        //std::cout << wAngle[i];
-    //}
-
+  //cout<<endl<<endl<< (m_imu.GetAccelInstantZ() * 9.81) / 1200 <<endl<<endl;
+  /*
+  Server.GetInstance()->StartAutomaticCapture();
+  cvSink = Server.GetVideo();
+  outputStream = Server.PutVideo("Blur", 640, 480);
+  */
 
   //std::cout<<"Left side : "<<m_container.GetSenseurs()->GetLeftEncoder()<<std::endl;
   //std::cout<<"Right side : "<<m_container.GetSenseurs()->GetRightEncoder()<<std::endl;
   //std::cout<<std::endl;
-  tempMotor.Set(tempJoystick.GetRawAxis(1));
+   
+  // tempMotor.Set(tempJoystick.GetRawAxis(1));
 }
 
 /**

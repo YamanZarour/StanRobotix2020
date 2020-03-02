@@ -18,7 +18,7 @@ constexpr int kMotorBall = 9;
 constexpr int kJoystick = 0;
 constexpr int kJoystickL = 1;
 constexpr int kJoystickR = 5;
-constexpr int kJoystickA = 3;
+constexpr int kJoystickA = 1;
 
 constexpr int kCaptDist = 0;
 constexpr double VoltToFootDistCapt = 3.5606;

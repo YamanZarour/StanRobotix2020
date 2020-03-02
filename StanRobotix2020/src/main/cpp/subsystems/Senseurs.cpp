@@ -36,27 +36,28 @@ void Senseurs::ResetEncoders()
 }
 
 double Senseurs::GetAngleX()
-{
-    return imu.GetGyroAngleX();
+{ 
+
+    //return imu.GetAngle();
 }
 
 double Senseurs::GetAccelX()        // Instant
 {
-    return imu.GetAccelInstantX();
+    //return imu.GetAccelInstantX();
 }
 
 double Senseurs::GetAccelY()        // Instant
 {
-    return imu.GetAccelInstantY(); 
+    //return imu.GetAccelInstantY(); 
 }
 
 double Senseurs::GetAccelZ()        // Instant
 {
 
-    return imu.GetAccelInstantZ();
+    //return imu.GetAccelInstantZ();
 }
 
 void Senseurs::Calibrate()
 {
-    imu.Calibrate();
+    //imu.Calibrate();
 }

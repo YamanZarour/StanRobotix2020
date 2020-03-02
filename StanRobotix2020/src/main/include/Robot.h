@@ -15,15 +15,23 @@
 
 #include "RobotContainer.h"
 
-#include "commands/TestCamera.h"
+#include <cscore.h>
+#include <cscore_cv.h>
+#include <cameraserver/CameraServer.h>
 
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Senseurs.h"
 
 #include "frc/Preferences.h"
 
+#include <adi/ADIS16448_IMU.h>
+
+#include <frc/BuiltInAccelerometer.h>
+
 class Robot : public frc::TimedRobot {
  public:
+
+  ~Robot();
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
@@ -33,27 +41,33 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-  
+
   static double motorBallForce;
 
  private:
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc2::Command* m_autonomousCommand = nullptr;
-  /*TestCamera * m_testCameraCommand;
-
-  cs::UsbCamera * Camera;
-  frc::CameraServer * Server;
-  nt::NetworkTableInstance mNetworkTableInstanceInst;
-  cs::CvSink * cvSink;
-  cs::CvSource * outputStream;*/
+  
+  cs::UsbCamera Camera;
+  frc::CameraServer Server;
+  //nt::NetworkTableInstance mNetworkTableInstanceInst;
+  cs::CvSink cvSink;
+  cs::CvSource outputStream;
 
   frc::Preferences* prefs;
 
   Senseurs m_senseur;
   DriveTrain m_drivetrain;
+  MotorBall m_moterBall;
+
+  frc::BuiltInAccelerometer accel;
 
   RobotContainer m_container;
   frc::Spark tempMotor{9};
   frc::Joystick tempJoystick{0};
+
+  WPI_TalonSRX motor1;
+
+  frc::ADIS16448_IMU m_imu{};
 };
